@@ -120,7 +120,7 @@ button {
   position: absolute;
   width: 40px;
   height: 40px;
-  background-image: url("Links/Ship.png");
+  background-image: url("Ship.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -190,3 +190,4 @@ button {
   background: rgba(0,255,213,0.2);
   opacity: 1;
 }
+
