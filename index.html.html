@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Space Mission</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- WELCOME SCREEN -->
+  <section id="welcome-screen">
+    <div class="story">
+      <p>Incoming transmission…</p>
+    </div>
+    <button id="start-mission">Initialize mission</button>
+  </section>
+
+  <!-- GAME SCREEN -->
+  <section id="game-screen">
+  <div id="game-container">
+
+    <div id="grid"></div>
+
+    <div id="controls">
+        <br><br>
+      <div id="commands">
+        <strong>Commands</strong>
+          <br>
+
+        <button onclick="addCommand(COMMANDS.MOVE)">Move</button>
+        <button onclick="addCommand(COMMANDS.TURN_LEFT)">Turn Left</button>
+        <button onclick="addCommand(COMMANDS.TURN_RIGHT)">Turn Right</button>
+        <button onclick="addCommand(COMMANDS.CALL_F1)">f1</button>
+        <button onclick="addCommand(COMMANDS.CALL_F0)">f0</button>
+
+        <br><br>
+
+        <div id="colors">
+  <div class="color-box blue" onclick="setColor(1)"></div>
+  <div class="color-box pink" onclick="setColor(2)"></div>
+  <div class="color-box orange" onclick="setColor(3)"></div>
+        </div>
+
+        <br>
+        <button onclick="runProgram()">Run</button>
+      </div>
+
+      <div id="functions">
+          <br><br>
+  <strong>Functions</strong>
+
+  <!-- f0 -->
+  <div id="f0" class="function-row">
+    <div class="slot" data-func="f0" data-index="0">f0</div>
+    <div class="slot" data-func="f0" data-index="1"></div>
+    <div class="slot" data-func="f0" data-index="2"></div>
+    <div class="slot" data-func="f0" data-index="3"></div>
+    <div class="slot" data-func="f0" data-index="4"></div>
+    <div class="slot" data-func="f0" data-index="5"></div>
+    <div class="slot" data-func="f0" data-index="6"></div>
+  </div>
+
+  <!-- f1 -->
+  <div id="f1" class="function-row">
+    <div class="slot" data-func="f1" data-index="0">f1</div>
+    <div class="slot" data-func="f1" data-index="1"></div>
+    <div class="slot" data-func="f1" data-index="2"></div>
+    <div class="slot" data-func="f1" data-index="3"></div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- END SCREEN -->
+  <section id="end-screen">
+    <h1>Mission completed</h1>
+    <button id="reveal-destination">Reveal destination</button>
+  </section>
+
+  <script src="logic.js"></script>
+</body>
+</html>
