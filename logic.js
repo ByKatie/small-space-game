@@ -504,10 +504,3 @@ function revealDestination() {
 }
 
 renderFunctions();
-
-
-
-
-
-
-
