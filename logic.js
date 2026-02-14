@@ -2,6 +2,8 @@
 console.log("Game loaded");
 var isRunning = false;
 
+                                /*var DEBUG_SKIP_INTRO = true;*/
+
 /* ========= SCREEN MANAGEMENT ========= */
 
 function showScreen(id) {
@@ -13,6 +15,15 @@ function showScreen(id) {
 }
 
 showScreen('welcome-screen');
+
+                                /*if (DEBUG_SKIP_INTRO) {
+                                    showScreen('game-screen');
+                                    } else {
+                                    startIntro();
+                                    }*/
+setTimeout(function() {
+  intro.style.animation = "scrollText 60s linear forwards";
+}, 10);
 
 var intro = document.getElementById("intro-scroll");
 
@@ -164,6 +175,10 @@ var activeSlot = {
   func: null,
   index: null
 };
+
+document.getElementById("mission-start").addEventListener("click", function () {
+  showScreen("game-screen");
+});
 
 /* ========= SLOT UI ========= */
 
@@ -410,18 +425,35 @@ function renderFunctionRow(id, fn) {
   var slots = document.querySelectorAll('#' + id + ' .slot');
 
   for (var i = 0; i < fn.length; i++) {
-    var text = '';
-    if (i === 0) text = id;
 
-    if (fn[i].command) text += ' ' + fn[i].command;
+    slots[i].innerHTML = '';
+    slots[i].className = "slot";
 
-    if (fn[i].color === 1) text += ' ðŸ”µ';
-    if (fn[i].color === 2) text += ' ðŸŒ¸';
-    if (fn[i].color === 3) text += ' ðŸŸ ';
+    if (i === 0) {
+      slots[i].textContent = id;
+      continue;
+    }
 
-    slots[i].textContent = text;
+    var step = fn[i];
+    if (!step.command) continue;
+
+    var icon = document.createElement("div");
+    icon.className = "cmd-icon";
+
+    if (step.command === COMMANDS.MOVE) icon.textContent = "M";
+    if (step.command === COMMANDS.TURN_LEFT) icon.textContent = "L";
+    if (step.command === COMMANDS.TURN_RIGHT) icon.textContent = "R";
+    if (step.command === COMMANDS.CALL_F0) icon.textContent = "f0";
+    if (step.command === COMMANDS.CALL_F1) icon.textContent = "f1";
+
+    slots[i].appendChild(icon);
+
+    if (step.color) {
+  slots[i].classList.add("color-" + step.color);
+}
   }
 }
+
 
 function stopProgram() {
   isRunning = false;
@@ -462,13 +494,10 @@ function checkWin() {
   ) {
     showScreen('end-screen');
   }
+}
 
+function revealDestination() {
+  window.location.href = "https://www.donshot.cz/laserova-strelnice";
 }
 
 renderFunctions();
-
-
-
-
-
-
