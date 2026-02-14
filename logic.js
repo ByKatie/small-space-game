@@ -14,9 +14,15 @@ function showScreen(id) {
 
 showScreen('welcome-screen');
 
-setTimeout(function() {
-  document.getElementById("mission-start").style.display = "block";
-}, 100000);
+var intro = document.getElementById("intro-scroll");
+
+intro.addEventListener("animationend", function() {
+  var btn = document.getElementById("mission-start");
+  btn.style.display = "flex";
+  setTimeout(function(){
+    btn.style.opacity = "1";
+  }, 50);
+});
 
 function startGame() {
   showScreen('game-screen');
@@ -86,7 +92,7 @@ var startState = {
 var directions = ['north', 'east', 'south', 'west'];
 
 function renderShip() {
-    // odebrat star� zv�raznen�
+    // odebrat staré zvýraznení
 document.querySelectorAll('.cell').forEach(function(c) {
   c.classList.remove('current');
 });
@@ -219,9 +225,9 @@ function renderF0() {
 
     if (f0[i].command) text += ' ' + f0[i].command;
 
-    if (f0[i].color === 1) text += ' 🔵';
-    if (f0[i].color === 2) text += ' 🌸';
-    if (f0[i].color === 3) text += ' 🟠';
+    if (f0[i].color === 1) text += ' ðŸ”µ';
+    if (f0[i].color === 2) text += ' ðŸŒ¸';
+    if (f0[i].color === 3) text += ' ðŸŸ ';
 
     slots[i].textContent = text;
   }
@@ -409,9 +415,9 @@ function renderFunctionRow(id, fn) {
 
     if (fn[i].command) text += ' ' + fn[i].command;
 
-    if (fn[i].color === 1) text += ' 🔵';
-    if (fn[i].color === 2) text += ' 🌸';
-    if (fn[i].color === 3) text += ' 🟠';
+    if (fn[i].color === 1) text += ' ðŸ”µ';
+    if (fn[i].color === 2) text += ' ðŸŒ¸';
+    if (fn[i].color === 3) text += ' ðŸŸ ';
 
     slots[i].textContent = text;
   }
@@ -449,7 +455,7 @@ function resetGame() {
 
 function checkWin() {
 
-  // pokud je lod zpet na startovn� pozici
+  // pokud je lod zpet na startovní pozici
   if (
     ship.x === startState.x &&
     ship.y === startState.y
