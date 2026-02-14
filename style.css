@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 40px 0;
+  padding: 0;
   font-family: monospace;
   display: flex;
   flex-direction: column;
@@ -26,10 +26,23 @@ body {
   text-align: center;
   font-size: 18px; 
   line-height: 1.8;
-  animation: scrollText 140s linear forwards;
+  animation: scrollText 90s linear forwards;
   letter-spacing: 1.2px;
   font-weight: 300;
   text-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+#mission-start {
+  position: absolute;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  z-index: 10;
 }
 
 @keyframes scrollText {
@@ -45,6 +58,7 @@ section {
   opacity: 0;
   min-height: 100vh;
   display: none;
+  padding: 20px;  
 
   font-family: monospace;
   color: white;
@@ -56,6 +70,14 @@ section {
 
 #welcome-screen.active {
   animation: fadeInScreen 2s ease forwards;
+}
+
+#welcome-screen {
+  position: relative;
+}
+
+#mission-start button {
+  pointer-events: auto;
 }
 
 @keyframes fadeInScreen {
@@ -256,6 +278,27 @@ button {
 
 .cell.current {
   box-shadow: 0 0 10px #00ffd5;
+}
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 10px 0;
+  }
+
+  .intro-text {
+    width: 85%;
+    font-size: 20px;
+  }
+
+  #grid {
+    transform: scale(0.85);
+  }
+
+  #game-container {
+    padding: 10px;
+  }
+
 }
 
 
