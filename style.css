@@ -262,6 +262,11 @@ button {
   animation: collect 0.3s ease-out forwards;
 }
 
+#functions {
+  align-self: flex-start;
+  width: 100%;
+}
+
 .function-row {
   display: flex;
   flex-wrap: nowrap;      /* zakáže zalomení */
@@ -389,4 +394,5 @@ body {
     opacity: 1;
   }
 }
+
 
