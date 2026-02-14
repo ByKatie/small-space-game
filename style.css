@@ -225,7 +225,7 @@ button {
   position: absolute;
   width: 40px;
   height: 40px;
-  background-image: url("Links/Ship.png");
+  background-image: url("Ship.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -267,16 +267,11 @@ button {
   width: 100%;
 }
 
-#controls {
-  align-self: flex-start;
-  width: 100%;
-}
-
 .function-row {
   display: flex;
   flex-wrap: nowrap;      /* zakáže zalomení */
   justify-content: flex-start;  /* zarovná nalevo */
-  gap: 8px;
+  gap: 4px;
   max-width: 100%;
 }
 
@@ -399,6 +394,4 @@ body {
     opacity: 1;
   }
 }
-
-
 
