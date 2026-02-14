@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 40px 0;
   font-family: monospace;
   display: flex;
   flex-direction: column;
@@ -379,4 +379,5 @@ body {
     opacity: 1;
   }
 }
+
 
