@@ -267,6 +267,11 @@ button {
   width: 100%;
 }
 
+#controls {
+  align-self: flex-start;
+  width: 100%;
+}
+
 .function-row {
   display: flex;
   flex-wrap: nowrap;      /* zakáže zalomení */
@@ -394,5 +399,6 @@ body {
     opacity: 1;
   }
 }
+
 
 
