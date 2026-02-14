@@ -37,6 +37,9 @@ intro.addEventListener("animationend", function() {
 
 function startGame() {
   showScreen('game-screen');
+  setTimeout(function() {
+    renderShip();
+  }, 50);
 }
 
 /* ========= GRID ========= */
