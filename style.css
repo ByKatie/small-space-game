@@ -135,14 +135,19 @@ button {
 
 #grid {
   display: grid;
-  grid-template-columns: repeat(11, 40px);
-  grid-template-rows: repeat(9, 40px);
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 11 / 9;
+  margin: 0 auto;
   gap: 2px;
+  position: relative;
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
+  width: 100%;
+  height: 100%;
   background: #111;
 }
 
@@ -306,10 +311,6 @@ button {
   .intro-text {
     width: 85%;
     font-size: 20px;
-  }
-
-  #grid {
-    transform: scale(0.85);
   }
 
   #game-container {
