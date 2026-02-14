@@ -120,9 +120,12 @@ document.querySelectorAll('.cell')[index].classList.add('current');
 
   }
 
-  var size = 42;
-  shipEl.style.left = (ship.x * size) + 'px';
-  shipEl.style.top = (ship.y * size) + 'px';
+  var cellSize = gridEl.clientWidth / 11;
+
+shipEl.style.left = (ship.x * cellSize) + 'px';
+shipEl.style.top = (ship.y * cellSize) + 'px';
+shipEl.style.width = cellSize + 'px';
+shipEl.style.height = cellSize + 'px';
 
   var rotation = {
     north: 'rotate(0deg)',
@@ -501,10 +504,3 @@ function revealDestination() {
 }
 
 renderFunctions();
-
-
-
-
-
-
-
