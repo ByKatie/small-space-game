@@ -11,6 +11,11 @@ body {
   color: white;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 .intro-wrapper {
   position: relative;
   height: 70vh;
@@ -63,15 +68,18 @@ section {
   opacity: 0;
   min-height: 100vh;
   display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 900px;   /* klidně 800–1000 podle pocitu */
+  margin: 0 auto;     /* TO JE KLÍČ */
   padding: 20px;
   box-sizing: border-box;
 
   font-family: monospace;
   color: white;
-
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 #welcome-screen.active {
