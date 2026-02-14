@@ -1,0 +1,392 @@
+body {
+  margin: 0;
+  padding: 40px 0;
+  font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: url("space.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.intro-wrapper {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mask-image: linear-gradient(to bottom, transparent 0%, white 20%, white 80%, transparent 100%);
+}
+
+.intro-text {
+  text-align: center;
+  font-size: 18px; 
+}
+
+/*.intro-text {
+  width: 40%;
+  text-align: center;
+  font-size: 18px; 
+  line-height: 1.8;
+  animation: scrollText 60s linear forwards;
+  letter-spacing: 1.2px;
+  font-weight: 300;
+  text-shadow: 0 0 10px rgba(255,255,255,0.4);
+}*/
+
+#mission-start {
+  position: absolute;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  z-index: 10;
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateY(60%);
+  }
+  to {
+    transform: translateY(-70%);
+  }
+}
+
+section {
+  opacity: 0;
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 900px;   /* klidně 800–1000 podle pocitu */
+  margin: 0 auto;     /* TO JE KLÍČ */
+  padding: 20px;
+  box-sizing: border-box;
+
+  font-family: monospace;
+  color: white;
+}
+
+#welcome-screen.active {
+  animation: fadeInScreen 2s ease forwards;
+}
+
+#welcome-screen {
+  position: relative;
+}
+
+#mission-start button {
+  pointer-events: auto;
+}
+
+@keyframes fadeInScreen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.signal {
+  animation: signalBlink 0.6s infinite alternate;
+}
+
+@keyframes signalBlink {
+  0% {
+    opacity: 0.4;
+    text-shadow: 0 0 4px rgba(255,255,255,0.2);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 12px rgba(255,255,255,0.8);
+  }
+}
+
+section.active {
+  display: flex;
+  opacity: 1;
+}
+
+button {
+  margin-top: 20px;
+  font-family: monospace;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 11 / 9;
+  margin: 0 auto;
+  gap: 2px;
+  position: relative;
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  background: #111;
+}
+
+.cell.void {
+  background: transparent;
+}
+
+.cell.path {
+  background: #010057; /* modrá – letový prostor */
+}
+
+.cell.component {
+  background: #ff69b4; /* růžová – součástky */
+}
+
+.cell.goal {
+  background: #ffa500; /* oranžová – cíl */
+}
+
+.slot.active {
+  opacity: 1;
+  border-color: #00ffd5;
+  box-shadow: 0 0 8px rgba(0,255,213,0.8);
+}
+
+#colors {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.color-box {
+  width: 32px;
+  height: 32px;
+  border: 1px solid white;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.color-box:hover {
+  opacity: 1;
+}
+
+.color-box.blue {
+  background: #010057;
+}
+
+.color-box.pink {
+  background: #ff69b4;
+}
+
+.color-box.orange {
+  background: #ffa500;
+}
+
+#ship {
+  position: absolute;
+}
+
+#colors {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.color-box {
+  width: 32px;
+  height: 32px;
+  border: 1px solid white;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+  #ship {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url("Links/Ship.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease, top 0.3s ease, left 0.3s ease;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(30,144,255,0.8));
+}
+
+#ship.moving {
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.9));
+}
+
+#grid {
+  position: relative;
+}
+
+.command {
+  opacity: 0.5;
+  padding: 4px 6px;
+}
+
+.command.active {
+  opacity: 1;
+  color: #00ffd5;
+  text-shadow: 0 0 8px rgba(0, 255, 213, 0.8);
+}
+
+@keyframes collect {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+.cell.collected {
+  animation: collect 0.3s ease-out forwards;
+}
+
+.function-row {
+  display: flex;
+  flex-wrap: nowrap;      /* zakáže zalomení */
+  justify-content: flex-start;  /* zarovná nalevo */
+  gap: 8px;
+  max-width: 100%;
+}
+
+
+.slot {
+  width: 48px;
+  height: 48px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.slot.active {
+  opacity: 1;
+  border-color: #00ffd5;
+  box-shadow: 0 0 8px rgba(0,255,213,0.8);
+}
+
+.function-row.active {
+  border: 1px solid #00ffd5;
+  padding: 6px;
+  box-shadow: 0 0 12px rgba(0,255,213,0.6);
+}
+
+.slot.running {
+  background: rgba(0,255,213,0.2);
+  opacity: 1;
+}
+
+.cell.current {
+  box-shadow: 0 0 10px #00ffd5;
+}
+
+@media (max-width: 480px) {
+
+  body {
+    padding: 10px 0;
+  }
+
+  .intro-text {
+    width: 85%;
+    font-size: 20px;
+  }
+
+  #game-container {
+    padding: 10px;
+  }
+
+}
+
+.slot {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(4px);
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.slot:hover {
+  border-color: #00ffd5;
+}
+
+.cmd-icon {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.color-1 {
+  background: rgba(1, 0, 87, 1);
+  border-color: #010057;
+}
+
+.color-2 {
+  background: rgba(255, 105, 180, 1);
+  border-color: #ff69b4;
+}
+
+.color-3 {
+  background: rgba(255, 165, 0, 1);
+  border-color: #ffa500;
+}
+
+.color-box.none {
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.6);
+}
+
+.color-box.none:hover {
+  border-color: #00ffd5;
+}
+
+.mission-debrief {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: 1.2px;
+  font-weight: 300;
+  text-align: center;
+  opacity: 0;
+  animation: fadeDebrief 2s ease forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fadeDebrief {
+  to {
+    opacity: 1;
+  }
+}
+
