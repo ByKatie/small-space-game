@@ -151,8 +151,16 @@ attempt 1/3
 
   <!-- END SCREEN -->
   <section id="end-screen">
-    <h1>Mission completed</h1>
-    <button id="reveal-destination">Reveal destination</button>
+    <h2>Mission completed</h2>
+
+<div class="mission-debrief">
+Transmission stabilized.<br>
+Navigation protocol successfully executed.<br><br>
+Coordinates decrypted.<br>
+Destination unlocked and ready for reveal.
+</div>
+
+<button onclick="revealDestination()">Reveal destination</button>
   </section>
 
   <script src="logic.js"></script>
